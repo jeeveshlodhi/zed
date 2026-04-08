@@ -1,0 +1,45 @@
+[package]
+name = "android_emulator"
+version = "0.1.0"
+edition.workspace = true
+publish.workspace = true
+license = "GPL-3.0-or-later"
+
+[lints]
+workspace = true
+
+[lib]
+path = "src/android_emulator_panel.rs"
+doctest = false
+
+
+
+[dependencies]
+anyhow.workspace = true
+collections.workspace = true
+dirs.workspace = true
+fs.workspace = true
+futures.workspace = true
+gpui.workspace = true
+gpui_tokio.workspace = true
+http.workspace = true
+image.workspace = true
+log.workspace = true
+smallvec.workspace = true
+smol.workspace = true
+settings.workspace = true
+tokio = { workspace = true, features = ["full"] }
+ui.workspace = true
+util.workspace = true
+workspace.workspace = true
+
+# tonic and prost are specified directly rather than via workspace because the
+# workspace currently pins prost 0.9 (for the collab proto crate), while
+# tonic 0.12 requires prost 0.13. The two sets of generated types never cross
+# crate boundaries so Cargo compiles them independently without conflict.
+tonic = { version = "0.12", default-features = false, features = ["transport", "codegen", "prost"] }
+prost = "0.13"
+tokio-stream = "0.1"
+
+[package.metadata.cargo-machete]
+ignored = ["log", "tokio"]

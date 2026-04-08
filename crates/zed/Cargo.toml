@@ -64,6 +64,7 @@ required-features = ["visual-tests"]
 
 [dependencies]
 acp_tools.workspace = true
+android_emulator.workspace = true
 activity_indicator.workspace = true
 agent.workspace = true
 agent-client-protocol.workspace = true
